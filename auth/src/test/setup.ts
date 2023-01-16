@@ -3,21 +3,18 @@ import mongoose from 'mongoose';
 import request from 'supertest';
 import { app } from '../app';
 
+
 declare global {
-  namespace NodeJS {
-    interface Global {
-      signin(): Promise<string[]>;
-    }
-  }
+  function signin(): Promise<string[]>
 }
 
-let mongo: any;
+let mongo:any;
 beforeAll(async () => {
   process.env.JWT_KEY = 'asdfasdf';
   process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-  mongo = new MongoMemoryServer();
-  const mongoUri = await mongo.getUri();
+  mongo = await MongoMemoryServer.create();
+  const mongoUri = mongo.getUri();
 
   await mongoose.connect(mongoUri, {
     useNewUrlParser: true,
@@ -34,8 +31,10 @@ beforeEach(async () => {
 });
 
 afterAll(async () => {
-  await mongo.stop();
-  await mongoose.connection.close();
+    if (mongo) {
+    await mongoose.connection.close();
+    await mongo.stop();    
+  }
 });
 
 global.signin = async () => {
