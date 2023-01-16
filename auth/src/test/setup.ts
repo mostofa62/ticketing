@@ -3,8 +3,9 @@ import mongoose from 'mongoose';
 import request from 'supertest';
 import { app } from '../app';
 
+
 declare global {
-  function signin(): string[]
+  function signin(): Promise<string[]>
 }
 
 let mongo: any;
