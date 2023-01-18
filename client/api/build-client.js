@@ -6,7 +6,7 @@ export default ({ req }) => {
 
     return axios.create({
       baseURL:
-        'http://24.199.74.81',
+        'http://singlevps.com/',
       headers: req.headers,
     });
   } else {
