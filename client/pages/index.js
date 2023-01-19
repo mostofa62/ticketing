@@ -17,7 +17,7 @@ const LandingPage = ({ currentUser, tickets }) => {
 
   return (
     <div>
-      <h1>Tickets in Digital Ocean By Mostofa</h1>
+      <h1>MostoTicekting Deployments</h1>
       <table className="table">
         <thead>
           <tr>
