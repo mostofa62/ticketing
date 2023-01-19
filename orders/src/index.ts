@@ -7,7 +7,8 @@ import { ExpirationCompleteListener } from './events/listeners/expiration-comple
 import { PaymentCreatedListener } from './events/listeners/payment-created-listener';
 
 const start = async () => {
-  console.log('Starting...!..in Digital Ocean');
+  console.log('mostotickeitng deployment');
+
   if (!process.env.JWT_KEY) {
     throw new Error('JWT_KEY must be defined');
   }
